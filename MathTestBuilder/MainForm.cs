@@ -40,15 +40,32 @@ namespace MathTestBuilder
     {
       var allvalues = new Level1Builder().Build();
       string fileName = Path.Combine(this.targetDirectory.FullName, "level1.doc");
-      new ProblemWordWriter(7, 1, 22, 4, allvalues.Count, 3).WriteToFile(fileName, allvalues);
+      try
+      {
+        new ProblemWordWriter(7, 1, 22, 4, allvalues.Count, 3).WriteToFile(fileName, allvalues);
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show(string.Format("Cannot write the problems to file {0}, make sure that file not exist or has been closed : {1}", fileName, ex.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        return;
+      }
       Process.Start("WINWORD.EXE", fileName);
+
     }
 
     private void btnLevel2_Click(object sender, EventArgs e)
     {
       var allvalues = new Level2Builder().Build();
       string fileName = Path.Combine(this.targetDirectory.FullName, "level2.doc");
-      new ProblemWordWriter(6, 2, 22, 4, 75, 3).WriteToFile(fileName, allvalues);
+      try
+      {
+        new ProblemWordWriter(6, 2, 22, 4, 75, 3).WriteToFile(fileName, allvalues);
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show(string.Format("Cannot write the problems to file {0}, make sure that file not exist or has been closed : {1}", fileName, ex.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        return;
+      }
       Process.Start("WINWORD.EXE", fileName);
     }
 
