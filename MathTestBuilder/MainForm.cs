@@ -28,6 +28,11 @@ namespace MathTestBuilder
 
       LoadOption();
 
+      if (!Directory.Exists(this.targetDirectory.FullName))
+      {
+        this.targetDirectory.FullName = AppDomain.CurrentDomain.BaseDirectory;
+      }
+
       this.Text = MyAssembly.Description + ": v" + MyAssembly.Version;
     }
 
