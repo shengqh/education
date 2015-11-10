@@ -28,6 +28,7 @@
     /// </summary>
     private void InitializeComponent()
     {
+      System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
       this.btnLevel1 = new System.Windows.Forms.Button();
       this.btnLevel2 = new System.Windows.Forms.Button();
       this.btnTarget = new System.Windows.Forms.Button();
@@ -98,6 +99,7 @@
       this.Controls.Add(this.btnExit);
       this.Controls.Add(this.btnLevel2);
       this.Controls.Add(this.btnLevel1);
+      this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.Name = "MainForm";
       this.Text = "Math Test Builder";
       this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);

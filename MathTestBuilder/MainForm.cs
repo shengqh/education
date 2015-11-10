@@ -27,6 +27,8 @@ namespace MathTestBuilder
       AddComponent(this.targetDirectory);
 
       LoadOption();
+
+      this.Text = MyAssembly.Description + ": v" + MyAssembly.Version;
     }
 
     private void btnLevel1_Click(object sender, EventArgs e)
