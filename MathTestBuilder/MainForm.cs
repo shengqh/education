@@ -1,10 +1,12 @@
 ﻿using Novacode;
+using RCPA.Gui;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,27 +14,45 @@ using System.Windows.Forms;
 
 namespace MathTestBuilder
 {
-  public partial class MainForm : Form
+  public partial class MainForm : ComponentUI
   {
+    private RcpaDirectoryField targetDirectory;
+
     public MainForm()
     {
       InitializeComponent();
+
+      this.targetDirectory = new RcpaDirectoryField(btnTarget, txtTargetDirectory, "TargetDirectory", "Target", true);
+
+      AddComponent(this.targetDirectory);
+
+      LoadOption();
     }
 
     private void btnLevel1_Click(object sender, EventArgs e)
     {
-      var allvalues = new TestLevel1Builder().Build();
-      string fileName = @"D:\sqh\test\zero2five.docx";
-      new TestItemWordWriter(7, 1, 19, 4).WriteToFile(fileName, allvalues);
+      var allvalues = new Level1Builder().Build();
+      string fileName = Path.Combine(this.targetDirectory.FullName, "level1.doc");
+      new ProblemWordWriter(7, 1, 22, 4, allvalues.Count, 3).WriteToFile(fileName, allvalues);
       Process.Start("WINWORD.EXE", fileName);
     }
 
     private void btnLevel2_Click(object sender, EventArgs e)
     {
-      var allvalues = new TestLevel2Builder().Build();
-      string fileName = @"D:\sqh\test\five2ten.docx";
-      new TestItemWordWriter(6, 2, 19, 3).WriteToFile(fileName, allvalues);
+      var allvalues = new Level2Builder().Build();
+      string fileName = Path.Combine(this.targetDirectory.FullName, "level2.doc");
+      new ProblemWordWriter(6, 2, 22, 4, 75, 3).WriteToFile(fileName, allvalues);
       Process.Start("WINWORD.EXE", fileName);
+    }
+
+    private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+    {
+      SaveOption();
+    }
+
+    private void btnExit_Click(object sender, EventArgs e)
+    {
+      Close();
     }
   }
 }

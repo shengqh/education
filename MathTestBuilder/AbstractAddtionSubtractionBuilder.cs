@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MathTestBuilder
 {
-  public class AddtionSubtractionBuilder : ITestBuilder
+  public class AddtionSubtractionBuilder : IBuilder
   {
     private int[] digits;
     private int minvalue;
@@ -19,13 +19,13 @@ namespace MathTestBuilder
       this.rand = new Random(DateTime.Now.Millisecond);
     }
 
-    public List<TestItem> Build()
+    public List<Problem> Build()
     {
       var signs = new[] { '-', '+' };
 
-      Dictionary<char, HashSet<TestItem>> data = new Dictionary<char, HashSet<TestItem>>();
-      data[signs[0]] = new HashSet<TestItem>();
-      data[signs[1]] = new HashSet<TestItem>();
+      Dictionary<char, HashSet<Problem>> data = new Dictionary<char, HashSet<Problem>>();
+      data[signs[0]] = new HashSet<Problem>();
+      data[signs[1]] = new HashSet<Problem>();
       var maxvalue = digits.Max();
 
       foreach (var digit1 in digits)
@@ -35,10 +35,10 @@ namespace MathTestBuilder
           var sum = digit1 + digit2;
           if (sum <= maxvalue && sum >= minvalue)
           {
-            data['+'].Add(new TestItem(digit1, '+', digit2));
-            data['+'].Add(new TestItem(digit2, '+', digit1));
-            data['-'].Add(new TestItem(sum, '-', digit1));
-            data['-'].Add(new TestItem(sum, '-', digit2));
+            data['+'].Add(new Problem(digit1, '+', digit2));
+            data['+'].Add(new Problem(digit2, '+', digit1));
+            data['-'].Add(new Problem(sum, '-', digit1));
+            data['-'].Add(new Problem(sum, '-', digit2));
           }
         }
       }

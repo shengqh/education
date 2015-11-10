@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace MathTestBuilder
 {
-  public interface ITestBuilder
+  public interface IBuilder
   {
-    List<TestItem> Build();
+    List<Problem> Build();
   }
 }

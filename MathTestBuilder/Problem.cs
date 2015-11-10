@@ -6,20 +6,20 @@ using System.Threading.Tasks;
 
 namespace MathTestBuilder
 {
-  public class TestItem : IEquatable<TestItem>
+  public class Problem : IEquatable<Problem>
   {
     public int LeftNumber { get; set; }
     public char Sign { get; set; }
     public int RightNumber { get; set; }
 
-    public TestItem(int leftNumber, char sign, int rightNumber)
+    public Problem(int leftNumber, char sign, int rightNumber)
     {
       this.LeftNumber = leftNumber;
       this.Sign = sign;
       this.RightNumber = rightNumber;
     }
 
-    public bool Equals(TestItem other)
+    public bool Equals(Problem other)
     {
       if (other == null)
       {
@@ -31,12 +31,12 @@ namespace MathTestBuilder
 
     public override bool Equals(object obj)
     {
-      if (!(obj is TestItem))
+      if (!(obj is Problem))
       {
         return false;
       }
 
-      return Equals(obj as TestItem);
+      return Equals(obj as Problem);
     }
 
     public override int GetHashCode()

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MathTestBuilder
 {
-  public static class MathTestUtils
+  public static class Utils
   {
     public static int GetIndex(Random rand, int maxValue)
     {

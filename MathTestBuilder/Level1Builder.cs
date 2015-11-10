@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace MathTestBuilder
 {
-  public class TestLevel1Builder : AddtionSubtractionBuilder
+  public class Level1Builder : AddtionSubtractionBuilder
   {
-    public TestLevel1Builder() : base(new[] { 0, 1, 2, 3, 4, 5 }, 0) { }
+    public Level1Builder() : base(new[] { 0, 1, 2, 3, 4, 5 }, 0) { }
   }
 }

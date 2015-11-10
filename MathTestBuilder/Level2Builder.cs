@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 
 namespace MathTestBuilder
 {
-  public class TestLevel2Builder : ITestBuilder
+  public class Level2Builder : IBuilder
   {
-    public List<TestItem> Build()
+    public List<Problem> Build()
     {
       var digits = new[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
       var signs = new[] { '-', '+' };
       var seed = DateTime.Now.Millisecond;
       var rand = new Random(seed);
 
-      Dictionary<char, HashSet<TestItem>> data = new Dictionary<char, HashSet<TestItem>>();
-      data[signs[0]] = new HashSet<TestItem>();
-      data[signs[1]] = new HashSet<TestItem>();
+      Dictionary<char, HashSet<Problem>> data = new Dictionary<char, HashSet<Problem>>();
+      data[signs[0]] = new HashSet<Problem>();
+      data[signs[1]] = new HashSet<Problem>();
       var maxvalue = digits.Max();
       var minvalue = 6;
 
@@ -28,10 +28,10 @@ namespace MathTestBuilder
           var sum = digit1 + digit2;
           if (sum <= maxvalue && sum >= minvalue)
           {
-            data['+'].Add(new TestItem(digit1, '+', digit2));
-            data['+'].Add(new TestItem(digit2, '+', digit1));
-            data['-'].Add(new TestItem(sum, '-', digit1));
-            data['-'].Add(new TestItem(sum, '-', digit2));
+            data['+'].Add(new Problem(digit1, '+', digit2));
+            data['+'].Add(new Problem(digit2, '+', digit1));
+            data['-'].Add(new Problem(sum, '-', digit1));
+            data['-'].Add(new Problem(sum, '-', digit2));
           }
         }
       }
