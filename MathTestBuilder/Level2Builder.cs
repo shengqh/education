@@ -10,7 +10,7 @@ namespace MathTestBuilder
   {
     public List<Problem> Build()
     {
-      var digits = new[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+      var digits = new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
       var signs = new[] { '-', '+' };
       var seed = DateTime.Now.Millisecond;
       var rand = new Random(seed);
@@ -34,6 +34,11 @@ namespace MathTestBuilder
             data['-'].Add(new Problem(sum, '-', digit2));
           }
         }
+      }
+
+      for (int i = minvalue; i <= maxvalue; i++)
+      {
+        data['-'].Add(new Problem(i, '-', 0));
       }
 
       return (from v in data.Values
