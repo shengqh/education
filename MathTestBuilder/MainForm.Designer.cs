@@ -34,6 +34,7 @@
       this.btnTarget = new System.Windows.Forms.Button();
       this.txtTargetDirectory = new System.Windows.Forms.TextBox();
       this.btnExit = new System.Windows.Forms.Button();
+      this.btnLevel3 = new System.Windows.Forms.Button();
       this.SuspendLayout();
       // 
       // btnLevel1
@@ -73,15 +74,15 @@
       this.txtTargetDirectory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
       this.txtTargetDirectory.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.txtTargetDirectory.Location = new System.Drawing.Point(338, 30);
+      this.txtTargetDirectory.Location = new System.Drawing.Point(349, 30);
       this.txtTargetDirectory.Name = "txtTargetDirectory";
-      this.txtTargetDirectory.Size = new System.Drawing.Size(782, 31);
+      this.txtTargetDirectory.Size = new System.Drawing.Size(771, 31);
       this.txtTargetDirectory.TabIndex = 3;
       // 
       // btnExit
       // 
       this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.btnExit.Location = new System.Drawing.Point(351, 86);
+      this.btnExit.Location = new System.Drawing.Point(513, 86);
       this.btnExit.Name = "btnExit";
       this.btnExit.Size = new System.Drawing.Size(146, 70);
       this.btnExit.TabIndex = 1;
@@ -89,11 +90,23 @@
       this.btnExit.UseVisualStyleBackColor = true;
       this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
       // 
+      // btnLevel3
+      // 
+      this.btnLevel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.btnLevel3.Location = new System.Drawing.Point(349, 86);
+      this.btnLevel3.Name = "btnLevel3";
+      this.btnLevel3.Size = new System.Drawing.Size(146, 70);
+      this.btnLevel3.TabIndex = 4;
+      this.btnLevel3.Text = "Level 3";
+      this.btnLevel3.UseVisualStyleBackColor = true;
+      this.btnLevel3.Click += new System.EventHandler(this.btnLevel3_Click);
+      // 
       // MainForm
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(1148, 177);
+      this.Controls.Add(this.btnLevel3);
       this.Controls.Add(this.txtTargetDirectory);
       this.Controls.Add(this.btnTarget);
       this.Controls.Add(this.btnExit);
@@ -115,6 +128,7 @@
     private System.Windows.Forms.Button btnTarget;
     private System.Windows.Forms.TextBox txtTargetDirectory;
     private System.Windows.Forms.Button btnExit;
+    private System.Windows.Forms.Button btnLevel3;
   }
 }
 

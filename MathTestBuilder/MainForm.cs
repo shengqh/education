@@ -59,7 +59,7 @@ namespace MathTestBuilder
       string fileName = Path.Combine(this.targetDirectory.FullName, "level2.doc");
       try
       {
-        new ProblemWordWriter(6, 2, 22, 3, allvalues.Count, 3).WriteToFile(fileName, allvalues);
+        new ProblemWordWriter(8, 2, 16, 3, allvalues.Count, 3).WriteToFile(fileName, allvalues);
       }
       catch (Exception ex)
       {
@@ -77,6 +77,22 @@ namespace MathTestBuilder
     private void btnExit_Click(object sender, EventArgs e)
     {
       Close();
+    }
+
+    private void btnLevel3_Click(object sender, EventArgs e)
+    {
+      var allvalues = new Level3Builder().Build();
+      string fileName = Path.Combine(this.targetDirectory.FullName, "level3.doc");
+      try
+      {
+        new ProblemWordWriter(12, 2, 14, 2, allvalues.Count, 2).WriteToFile(fileName, allvalues);
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show(string.Format("Cannot write the problems to file {0}, make sure that file not exist or has been closed : {1}", fileName, ex.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        return;
+      }
+      Process.Start("WINWORD.EXE", fileName);
     }
   }
 }

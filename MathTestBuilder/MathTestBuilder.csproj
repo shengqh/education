@@ -62,6 +62,7 @@
   <ItemGroup>
     <Compile Include="Deploy.cs" />
     <Compile Include="IBuilder.cs" />
+    <Compile Include="Level3Builder.cs" />
     <Compile Include="Properties\MyAssembly.cs" />
     <Compile Include="ProblemWordWriter.cs" />
     <Compile Include="MainForm.cs">
