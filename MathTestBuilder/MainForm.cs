@@ -59,7 +59,7 @@ namespace MathTestBuilder
       string fileName = Path.Combine(this.targetDirectory.FullName, "level2.doc");
       try
       {
-        new ProblemWordWriter(8, 2, 16, 3, allvalues.Count, 3).WriteToFile(fileName, allvalues);
+        new ProblemWordWriter(9, 2, 16, 2, allvalues.Count, 3).WriteToFile(fileName, allvalues);
       }
       catch (Exception ex)
       {
