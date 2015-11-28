@@ -30,7 +30,7 @@ namespace MathTestBuilder
     public void WriteToFile(string fileName, List<Problem> items)
     {
       DocX doc = DocX.Create(fileName);
-      var font = new System.Drawing.FontFamily("Courier New");
+      var font = new System.Drawing.FontFamily("Consolas");
       var rand = new Random(DateTime.Now.Millisecond);
 
       var count = 0;
@@ -59,9 +59,13 @@ namespace MathTestBuilder
             break;
           }
         }
-        for (int i = 0; i < spaceLinesBetweenItem; i++)
+
+        if (count < totalCount)
         {
-          doc.InsertParagraph();
+          for (int i = 0; i < spaceLinesBetweenItem; i++)
+          {
+            doc.InsertParagraph();
+          }
         }
       }
 

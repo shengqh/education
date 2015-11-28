@@ -85,7 +85,7 @@ namespace MathTestBuilder
       string fileName = Path.Combine(this.targetDirectory.FullName, "level3.doc");
       try
       {
-        new ProblemWordWriter(12, 2, 14, 2, allvalues.Count, 2).WriteToFile(fileName, allvalues);
+        new ProblemWordWriter(12, 2, 14, 3, allvalues.Count, 2).WriteToFile(fileName, allvalues);
       }
       catch (Exception ex)
       {
