@@ -18,12 +18,14 @@ namespace MathTestBuilder
   {
     private RcpaDirectoryField targetDirectory;
 
+    [RcpaOption("NumberOfTest", RcpaOptionType.Int32)]
+    private int repeatTime { get { return (int)numberOfTest.Value; } set { numberOfTest.Value = value; } }
+
     public MainForm()
     {
       InitializeComponent();
 
       this.targetDirectory = new RcpaDirectoryField(btnTarget, txtTargetDirectory, "TargetDirectory", "Target", true);
-
       AddComponent(this.targetDirectory);
 
       LoadOption();
@@ -42,7 +44,7 @@ namespace MathTestBuilder
       string fileName = Path.Combine(this.targetDirectory.FullName, "level1.doc");
       try
       {
-        new ProblemWordWriter(7, 1, 22, 4, allvalues.Count, 3).WriteToFile(fileName, allvalues);
+        new ProblemWordWriter(7, 1, 22, 4, allvalues.Count, 3, true).WriteToFile(fileName, allvalues, (int)numberOfTest.Value);
       }
       catch (Exception ex)
       {
@@ -59,7 +61,7 @@ namespace MathTestBuilder
       string fileName = Path.Combine(this.targetDirectory.FullName, "level2.doc");
       try
       {
-        new ProblemWordWriter(9, 2, 16, 2, allvalues.Count, 3).WriteToFile(fileName, allvalues);
+        new ProblemWordWriter(9, 2, 16, 2, allvalues.Count, 3, true).WriteToFile(fileName, allvalues, (int)numberOfTest.Value);
       }
       catch (Exception ex)
       {
@@ -85,7 +87,7 @@ namespace MathTestBuilder
       string fileName = Path.Combine(this.targetDirectory.FullName, "level3.doc");
       try
       {
-        new ProblemWordWriter(12, 2, 14, 3, allvalues.Count, 2).WriteToFile(fileName, allvalues);
+        new ProblemWordWriter(12, 2, 14, 3, allvalues.Count, 2, false).WriteToFile(fileName, allvalues, (int)numberOfTest.Value);
       }
       catch (Exception ex)
       {

@@ -35,12 +35,15 @@
       this.txtTargetDirectory = new System.Windows.Forms.TextBox();
       this.btnExit = new System.Windows.Forms.Button();
       this.btnLevel3 = new System.Windows.Forms.Button();
+      this.label1 = new System.Windows.Forms.Label();
+      this.numberOfTest = new System.Windows.Forms.NumericUpDown();
+      ((System.ComponentModel.ISupportInitialize)(this.numberOfTest)).BeginInit();
       this.SuspendLayout();
       // 
       // btnLevel1
       // 
       this.btnLevel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.btnLevel1.Location = new System.Drawing.Point(22, 86);
+      this.btnLevel1.Location = new System.Drawing.Point(22, 148);
       this.btnLevel1.Name = "btnLevel1";
       this.btnLevel1.Size = new System.Drawing.Size(146, 70);
       this.btnLevel1.TabIndex = 0;
@@ -51,7 +54,7 @@
       // btnLevel2
       // 
       this.btnLevel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.btnLevel2.Location = new System.Drawing.Point(186, 86);
+      this.btnLevel2.Location = new System.Drawing.Point(186, 148);
       this.btnLevel2.Name = "btnLevel2";
       this.btnLevel2.Size = new System.Drawing.Size(146, 70);
       this.btnLevel2.TabIndex = 1;
@@ -82,7 +85,7 @@
       // btnExit
       // 
       this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.btnExit.Location = new System.Drawing.Point(513, 86);
+      this.btnExit.Location = new System.Drawing.Point(513, 148);
       this.btnExit.Name = "btnExit";
       this.btnExit.Size = new System.Drawing.Size(146, 70);
       this.btnExit.TabIndex = 1;
@@ -93,7 +96,7 @@
       // btnLevel3
       // 
       this.btnLevel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.btnLevel3.Location = new System.Drawing.Point(349, 86);
+      this.btnLevel3.Location = new System.Drawing.Point(349, 148);
       this.btnLevel3.Name = "btnLevel3";
       this.btnLevel3.Size = new System.Drawing.Size(146, 70);
       this.btnLevel3.TabIndex = 4;
@@ -101,11 +104,36 @@
       this.btnLevel3.UseVisualStyleBackColor = true;
       this.btnLevel3.Click += new System.EventHandler(this.btnLevel3_Click);
       // 
+      // label1
+      // 
+      this.label1.AutoSize = true;
+      this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label1.Location = new System.Drawing.Point(181, 80);
+      this.label1.Name = "label1";
+      this.label1.Size = new System.Drawing.Size(158, 25);
+      this.label1.TabIndex = 5;
+      this.label1.Text = "Number of test:";
+      // 
+      // numberOfTest
+      // 
+      this.numberOfTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.numberOfTest.Location = new System.Drawing.Point(349, 78);
+      this.numberOfTest.Name = "numberOfTest";
+      this.numberOfTest.Size = new System.Drawing.Size(87, 31);
+      this.numberOfTest.TabIndex = 6;
+      this.numberOfTest.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+      // 
       // MainForm
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(1148, 177);
+      this.ClientSize = new System.Drawing.Size(1148, 242);
+      this.Controls.Add(this.numberOfTest);
+      this.Controls.Add(this.label1);
       this.Controls.Add(this.btnLevel3);
       this.Controls.Add(this.txtTargetDirectory);
       this.Controls.Add(this.btnTarget);
@@ -116,6 +144,7 @@
       this.Name = "MainForm";
       this.Text = "Math Test Builder";
       this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
+      ((System.ComponentModel.ISupportInitialize)(this.numberOfTest)).EndInit();
       this.ResumeLayout(false);
       this.PerformLayout();
 
@@ -129,6 +158,8 @@
     private System.Windows.Forms.TextBox txtTargetDirectory;
     private System.Windows.Forms.Button btnExit;
     private System.Windows.Forms.Button btnLevel3;
+    private System.Windows.Forms.Label label1;
+    private System.Windows.Forms.NumericUpDown numberOfTest;
   }
 }
 
