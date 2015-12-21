@@ -1,15 +1,7 @@
-﻿using Novacode;
-using RCPA.Gui;
+﻿using RCPA.Gui;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MathTestBuilder
@@ -87,7 +79,7 @@ namespace MathTestBuilder
       string fileName = Path.Combine(this.targetDirectory.FullName, "level3.doc");
       try
       {
-        new ProblemWordWriter(12, 2, 14, 3, allvalues.Count, 2, false).WriteToFile(fileName, allvalues, (int)numberOfTest.Value);
+        new ProblemWordWriter(10, 2, 14, 3, allvalues.Count, 3, true).WriteToFile(fileName, allvalues, (int)numberOfTest.Value);
       }
       catch (Exception ex)
       {

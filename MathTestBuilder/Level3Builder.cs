@@ -10,7 +10,8 @@ namespace MathTestBuilder
   {
     public List<Problem> Build()
     {
-      var digits = new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 };
+      //var digits = new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 };
+      var digits = new[] { 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15 };
       var signs = new[] { '-', '+' };
       var seed = DateTime.Now.Millisecond;
       var rand = new Random(seed);
