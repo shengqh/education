@@ -1,5 +1,5 @@
 #Introduction
-This is an application for education. Currently, only math test builder is implemented for generate elementray math test problems (level 1 and 2 only).
+This is an application for education. Currently, only math test builder is implemented for generating elementray math test problems (level 1, 2 and 3).
 
 #Installation
 Download the software (MathTextBuilder.x.x.x.x.zip) from [releases](https://github.com/shengqh/education/releases), uncompress to any directory you want, run the MathTestBuilder.exe.
