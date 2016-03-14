@@ -36,7 +36,7 @@ namespace MathTestBuilder
       string fileName = Path.Combine(this.targetDirectory.FullName, "level1.doc");
       try
       {
-        new ProblemWordWriter(7, 1, 22, 4, allvalues.Count, 3, true).WriteToFile(fileName, allvalues, (int)numberOfTest.Value);
+        new ProblemWordWriter(7, 1, 20, 3, allvalues.Count, 3, true).WriteToFile(fileName, allvalues, (int)numberOfTest.Value);
       }
       catch (Exception ex)
       {
@@ -88,20 +88,20 @@ namespace MathTestBuilder
       }
       Process.Start("WINWORD.EXE", fileName);
     }
-        private void btnLevel4_Click(object sender, EventArgs e)
-        {
-            var allvalues = new Level4Builder().Build();
-            string fileName = Path.Combine(this.targetDirectory.FullName, "level4.doc");
-            try
-            {
-                new ProblemWordWriter(10, 2, 14, 3, allvalues.Count, 3, true).WriteToFile(fileName, allvalues, (int)numberOfTest.Value);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(string.Format("Cannot write the problems to file {0}, make sure that file not exist or has been closed : {1}", fileName, ex.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            Process.Start("WINWORD.EXE", fileName);
-        }
+    private void btnLevel4_Click(object sender, EventArgs e)
+    {
+      var allvalues = new Level4Builder().Build();
+      string fileName = Path.Combine(this.targetDirectory.FullName, "level4.doc");
+      try
+      {
+        new ProblemWordWriter(8, 2, 16, 3, allvalues.Count, 3, true).WriteToFile(fileName, allvalues, (int)numberOfTest.Value, 2);
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show(string.Format("Cannot write the problems to file {0}, make sure that file not exist or has been closed : {1}", fileName, ex.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        return;
+      }
+      Process.Start("WINWORD.EXE", fileName);
     }
+  }
 }

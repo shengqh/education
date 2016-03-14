@@ -10,6 +10,9 @@ Windows dotNet framework 4.5+, you may download it from [microsoft website] (htt
 <a name="Changes"/>
 #Changes
 
+20160126, Version 1.0.2.0
+New feature: add math level 4 test
+
 20151126, Version 1.0.1.0
 New feature: add math level 3 test
 

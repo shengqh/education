@@ -29,40 +29,51 @@ namespace MathTestBuilder
       this.addPageBreak = addPageBreak;
     }
 
-    public void WriteToFile(string fileName, List<Problem> source, int numberOfTime = 1)
+    public void WriteToFile(string fileName, List<Problem> source, int numberOfTime = 1, int splitTo = 1)
     {
       DocX doc = DocX.Create(fileName);
       var font = new System.Drawing.FontFamily("Consolas");
       var rand = new Random(DateTime.Now.Millisecond);
       var gap = new string(' ', spaceBetweenProblem - 1);
-      for (int iTime = 0; iTime < numberOfTime; iTime++)
+      var maxcount = (int)Math.Round(source.Count * 1.0 / splitTo);
+
+      List<Problem[]> allItems = new List<Problem[]>();
+      while (allItems.Count < numberOfTime)
+      {
+        var problems = source.ToArray();
+        Utils.Shuffle(problems);
+        var eachBin = problems.Length / splitTo;
+        for (int index = 0; index < splitTo; index++)
+        {
+          var min = index * eachBin;
+          var len = eachBin;
+          if (index == splitTo - 1)
+          {
+            len = problems.Length - (splitTo - 1) * eachBin;
+          }
+          allItems.Add(problems.Skip(min).Take(len).ToArray());
+        }
+      }
+
+      foreach(var items in allItems)
       {
         var count = 0;
         Paragraph lastLine = null;
-        var items = new List<Problem>(source);
-        while (items.Count > 0 && count < totalCount)
+
+        for(int pi = 0;pi < items.Length && pi < totalCount; pi += countPerLine)
         {
           var line1 = doc.InsertParagraph();
           lastLine = doc.InsertParagraph();
           for (int i = 0; i < countPerLine; i++)
           {
-            int index;
-            if (items.Count < 3)
-            {
-              index = items.Count - 1;
-            }
-            else
-            {
-              index = Utils.GetIndex(rand, items.Count - 1);
-            }
-            line1.Append(string.Format("{0} ", items[index].LeftNumber.ToString().PadLeft(maxDigits + 1, ' '))).Font(font).FontSize(fontSize).Append(gap).Font(font).FontSize(fontSize);
-            lastLine.Append(string.Format("{0}{1} ", items[index].Sign, items[index].RightNumber.ToString().PadLeft(maxDigits, ' '))).Font(font).FontSize(fontSize).UnderlineStyle(UnderlineStyle.thick).Append(gap).Font(font).FontSize(fontSize);
-            items.RemoveAt(index);
-            count++;
-            if (items.Count == 0)
+            int index = pi + i;
+            if(index >= items.Length)
             {
               break;
             }
+            line1.Append(string.Format("{0} ", items[index].LeftNumber.ToString().PadLeft(maxDigits + 1, ' '))).Font(font).FontSize(fontSize).Append(gap).Font(font).FontSize(fontSize);
+            lastLine.Append(string.Format("{0}{1} ", items[index].Sign, items[index].RightNumber.ToString().PadLeft(maxDigits, ' '))).Font(font).FontSize(fontSize).UnderlineStyle(UnderlineStyle.thick).Append(gap).Font(font).FontSize(fontSize);
+            count++;
           }
 
           if (count < totalCount)
@@ -74,7 +85,7 @@ namespace MathTestBuilder
           }
         }
 
-        if (iTime != numberOfTime - 1 && addPageBreak)
+        if (items != allItems.Last() && addPageBreak)
         {
           lastLine.InsertPageBreakAfterSelf();
         }

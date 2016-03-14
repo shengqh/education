@@ -10,24 +10,33 @@ namespace MathTestBuilder
   {
     private int[] digits;
     private int minvalue;
+    private int maxvalue;
     private Random rand;
 
-    public AddtionSubtractionBuilder(int[] digits, int minvalue)
+    public AddtionSubtractionBuilder(int[] digits, int minvalue, int maxvalue)
     {
       this.digits = digits;
       this.minvalue = minvalue;
+      this.maxvalue = maxvalue;
       this.rand = new Random(DateTime.Now.Millisecond);
+    }
+
+    protected virtual bool Accept(Problem item)
+    {
+      return true;
+    }
+
+    protected void AddItemToSet(HashSet<Problem> set, Problem item)
+    {
+      if (Accept(item))
+      {
+        set.Add(item);
+      }
     }
 
     public List<Problem> Build()
     {
-      var signs = new[] { '-', '+' };
-
-      Dictionary<char, HashSet<Problem>> data = new Dictionary<char, HashSet<Problem>>();
-      data[signs[0]] = new HashSet<Problem>();
-      data[signs[1]] = new HashSet<Problem>();
-      var maxvalue = digits.Max();
-
+      var data = new HashSet<Problem>();
       foreach (var digit1 in digits)
       {
         foreach (var digit2 in digits)
@@ -35,17 +44,15 @@ namespace MathTestBuilder
           var sum = digit1 + digit2;
           if (sum <= maxvalue && sum >= minvalue)
           {
-            data['+'].Add(new Problem(digit1, '+', digit2));
-            data['+'].Add(new Problem(digit2, '+', digit1));
-            data['-'].Add(new Problem(sum, '-', digit1));
-            data['-'].Add(new Problem(sum, '-', digit2));
+            AddItemToSet(data, new Problem(digit1, "+", digit2));
+            AddItemToSet(data, new Problem(digit2, "+", digit1));
+            AddItemToSet(data, new Problem(sum, "-", digit1));
+            AddItemToSet(data, new Problem(sum, "-", digit2));
           }
         }
       }
 
-      return (from v in data.Values
-              from vv in v
-              select vv).ToList();
+      return data.ToList();
     }
   }
 }
