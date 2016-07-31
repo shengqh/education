@@ -10,7 +10,8 @@ namespace MathTestBuilder
 {
   public class ProblemWordWriter
   {
-    private int countPerLine;
+    //private int rowCount;
+    private int colCount;
     private int maxDigits;
     private Double fontSize;
     private int spaceLinesBetweenItem;
@@ -18,9 +19,10 @@ namespace MathTestBuilder
     private bool addPageBreak;
     private int totalCount;
 
-    public ProblemWordWriter(int countPerLine, int maxDigits, double fontSize, int spaceLinesBetweenItem, int totalCount, int spaceBetweenProblem, bool addPageBreak)
+    public ProblemWordWriter(int colCount, /*int rowCount,*/ int maxDigits, double fontSize, int spaceLinesBetweenItem, int totalCount, int spaceBetweenProblem, bool addPageBreak)
     {
-      this.countPerLine = countPerLine;
+      this.colCount = colCount;
+      //this.rowCount = rowCount;
       this.maxDigits = maxDigits;
       this.fontSize = fontSize;
       this.spaceLinesBetweenItem = spaceLinesBetweenItem;
@@ -60,11 +62,11 @@ namespace MathTestBuilder
         var count = 0;
         Paragraph lastLine = null;
 
-        for(int pi = 0;pi < items.Length && pi < totalCount; pi += countPerLine)
+        for(int pi = 0;pi < items.Length && pi < totalCount; pi += colCount)
         {
           var line1 = doc.InsertParagraph();
           lastLine = doc.InsertParagraph();
-          for (int i = 0; i < countPerLine; i++)
+          for (int i = 0; i < colCount; i++)
           {
             int index = pi + i;
             if(index >= items.Length)
